@@ -79,7 +79,7 @@ class Game:
                     if move.label==self._current_moves[row][col].label:
                         i+=1
                 if i==3:
-                    self._has_winner=True
+                    self.has_winner=True
         # TODO: check whether the current move leads to a winning combo.
         # Do not return any values but set variables  self._has_winner 
         # and self.winner_combo in case of winning combo.
@@ -95,12 +95,11 @@ class Game:
         # TODO: check whether a tie was reached.
         # There is no winner and all moves have been tried.
 
-        return False
 
     def toggle_player(self):
         """Return a toggled player."""
 
-        self.current_player = next(self._players)
+        return next(self._players)
         # TODO: switches self.current_player to the other player.
         # Hint: https://docs.python.org/3/library/functions.html#next
        
