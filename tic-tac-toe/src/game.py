@@ -56,15 +56,15 @@ class Game:
         # contain an empty string (i.e. ""). 
         # Use variables no_winner and move_not_played.
 
-        no_winner=False
-        move_not_played=False
+        no_winner=True
+        move_not_played=True
 
-        if(self._current_moves[row][col].label == ""):
-            move_not_played=True
+        if(self._current_moves[row][col].label != ""):
+            move_not_played=False
         else:
-            if(not self._has_winner):
-                no_winner=True
-
+            if(self._has_winner):
+                no_winner=False
+                
         
         return no_winner and move_not_played
 
@@ -79,7 +79,7 @@ class Game:
                     if move.label==self._current_moves[row][col].label:
                         i+=1
                 if i==3:
-                    self.has_winner=True
+                    self._has_winner=True
         # TODO: check whether the current move leads to a winning combo.
         # Do not return any values but set variables  self._has_winner 
         # and self.winner_combo in case of winning combo.
@@ -95,9 +95,12 @@ class Game:
         # TODO: check whether a tie was reached.
         # There is no winner and all moves have been tried.
 
+        return False
+
     def toggle_player(self):
         """Return a toggled player."""
-        return next(self._players)
+
+        self.current_player = next(self._players)
         # TODO: switches self.current_player to the other player.
         # Hint: https://docs.python.org/3/library/functions.html#next
        
