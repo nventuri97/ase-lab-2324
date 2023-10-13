@@ -56,15 +56,15 @@ class Game:
         # contain an empty string (i.e. ""). 
         # Use variables no_winner and move_not_played.
 
-        no_winner=False
-        move_not_played=False
+        no_winner=True
+        move_not_played=True
 
-        if(self._current_moves[row][col].label == ""):
-            move_not_played=True
+        if(self._current_moves[row][col].label != ""):
+            move_not_played=False
         else:
-            if(not self._has_winner):
-                no_winner=True
-
+            if(self._has_winner):
+                no_winner=False
+                
         
         return no_winner and move_not_played
 
@@ -94,6 +94,7 @@ class Game:
         """Return True if the game is tied, and False otherwise."""
         # TODO: check whether a tie was reached.
         # There is no winner and all moves have been tried.
+
 
     def toggle_player(self):
         """Return a toggled player."""
