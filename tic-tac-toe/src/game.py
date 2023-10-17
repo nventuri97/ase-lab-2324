@@ -81,6 +81,7 @@ class Game:
                 if i==3:
                     self._has_winner=True
                     self.winner_combo=winning_combo
+                    print("BHO")
         # TODO: check whether the current move leads to a winning combo.
         # Do not return any values but set variables  self._has_winner 
         # and self.winner_combo in case of winning combo.
@@ -93,6 +94,14 @@ class Game:
 
     def is_tied(self):
         """Return True if the game is tied, and False otherwise."""
+        if self._has_winner:
+            return False
+
+        for move_list in self._current_moves:
+            for move in move_list:
+                if move.label == '':
+                    return False
+        return True
         # TODO: check whether a tie was reached.
         # There is no winner and all moves have been tried.
 
