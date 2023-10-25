@@ -1,0 +1,22 @@
+version: '1'
+services:
+  math-service:
+    image: ase-mathservice
+    container_name: math-service
+    ports:
+      - 8080:8080
+
+  string-service:
+    image: ase-stringservice
+    container_name: string-service
+    ports:
+      - 8081:8081 
+
+  gateway:
+    image: gateway
+    container_name: gateway
+    ports:
+      - 8082:8082
+    depends_on:
+      - math-service
+      - string-service
